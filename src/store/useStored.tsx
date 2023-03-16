@@ -1,6 +1,8 @@
+import { getDefaultData } from "src/constants/data";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import useGraph from "./useGraph";
+import useJson from "./useJson";
 
 type Sponsor = {
   handle: string;
@@ -17,6 +19,7 @@ function getTomorrow() {
 }
 
 const initialStates = {
+  editorLanguage: 'json',
   lightmode: false,
   hideCollapse: true,
   childrenCount: true,
@@ -30,6 +33,7 @@ const initialStates = {
 export interface ConfigActions {
   setSponsors: (sponsors: Sponsor[]) => void;
   setLightTheme: (theme: boolean) => void;
+  setEditorLanguage: (value: string) => void;
   toggleHideCollapse: (value: boolean) => void;
   toggleChildrenCount: (value: boolean) => void;
   toggleImagePreview: (value: boolean) => void;
@@ -39,6 +43,12 @@ const useStored = create(
   persist<typeof initialStates & ConfigActions>(
     set => ({
       ...initialStates,
+      setEditorLanguage:(value: string) =>{
+        set({
+          editorLanguage: value,
+        });
+        useJson.getState().setJson(getDefaultData());
+      },
       setLightTheme: (value: boolean) =>
         set({
           lightmode: value,

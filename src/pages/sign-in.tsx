@@ -38,7 +38,7 @@ const SignIn = () => {
   return (
     <>
       <Head>
-        <title>Sign In | JSON Crack</title>
+        <title>Sign In | JSON/YAML Crack</title>
       </Head>
       <Navbar />
       <StyledPageWrapper>

@@ -3,6 +3,7 @@ import { getNodePath } from "../getNodePath";
 import { addEdgeToGraph } from "./addEdgeToGraph";
 import { addNodeToGraph } from "./addNodeToGraph";
 import { traverse } from "./traverse";
+import yaml from 'js-yaml';
 
 export type Graph = {
   nodes: NodeData[];
@@ -29,11 +30,23 @@ export type States = {
   };
 };
 
-export const parser = (jsonStr: string) => {
-  try {
-    let json = parseTree(jsonStr);
-    if (!json) throw "Invalid JSON"!;
+export const parser = (str: string, editorLanguage: string = "json") => {
 
+  try {
+    console.log({str, editorLanguage });
+    let jsonStr = str;
+    switch(editorLanguage) {
+      case "json":
+        jsonStr = str;
+        break;
+      case "yaml":
+        const parsedYaml = yaml.load(str);
+        console.log(parsedYaml);
+        jsonStr = JSON.stringify(parsedYaml);
+        break;
+    }
+    let json = parseTree(jsonStr);
+    if (!json) throw `Invalid ${editorLanguage.toUpperCase()}`!;
     const states: States = {
       parentName: "",
       bracketOpen: [],

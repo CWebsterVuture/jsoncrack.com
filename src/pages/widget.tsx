@@ -80,7 +80,7 @@ const WidgetPage = () => {
         setGraph(event.data.json, event.data.options);
       } catch (error) {
         console.error(error);
-        toast.error("Invalid JSON!");
+        toast.error("Invalid JSON/YAML!");
       }
     };
 

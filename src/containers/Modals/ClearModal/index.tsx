@@ -19,9 +19,9 @@ export const ClearModal: React.FC<ModalProps> = ({ opened, onClose }) => {
   };
 
   return (
-    <Modal title="Delete JSON" opened={opened} onClose={onClose} centered>
+    <Modal title="Delete JSON/YAML" opened={opened} onClose={onClose} centered>
       <Group py="sm">
-        <Text>Are you sure you want to delete JSON?</Text>
+        <Text>Are you sure you want to delete JSON/YAML?</Text>
       </Group>
       <Divider py="xs" />
       <Group position="right">

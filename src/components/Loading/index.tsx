@@ -54,7 +54,7 @@ export const Loading: React.FC<LoadingProps> = ({ loading = true, message }) => 
       <Stack>
         <Image maw={150} src="./assets/rocket_ship.webp" alt="loading image" />
         <Title size="4rem">
-          <StyledText>JSON</StyledText> Crack
+          <StyledText>JSON/YAML</StyledText> Crack
         </Title>
         <StyledMessage>{message ?? "Preparing the environment for you..."}</StyledMessage>
       </Stack>

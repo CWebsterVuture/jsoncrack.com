@@ -6,7 +6,7 @@ export const LoginModal: React.FC<ModalProps> = ({ opened, onClose }) => {
     <Modal title="Sign In" opened={opened} onClose={onClose} centered>
       <Stack py="sm">
         <Title order={2}>Welcome Back!</Title>
-        <Text>Login to unlock full potential of JSON Crack!</Text>
+        <Text>Login to unlock full potential of JSON/YAML Crack!</Text>
         <Button component="a" href="/sign-in" size="md" fullWidth>
           Sign In
         </Button>

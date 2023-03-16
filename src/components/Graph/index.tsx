@@ -3,12 +3,9 @@ import { ReactZoomPanPinchRef, TransformComponent, TransformWrapper } from "reac
 import { Canvas, Edge, EdgeProps, ElkRoot, NodeProps } from "reaflow";
 import { CustomNode } from "src/components/CustomNode";
 import useGraph from "src/store/useGraph";
-import useUser from "src/store/useUser";
 import { getNodePath } from "src/utils/getNodePath";
 import styled from "styled-components";
 import { Loading } from "../Loading";
-import { ErrorView } from "./ErrorView";
-import { PremiumView } from "./PremiumView";
 
 interface GraphProps {
   isWidget?: boolean;
@@ -49,7 +46,6 @@ const StyledEditorWrapper = styled.div<{ widget: boolean }>`
 `;
 
 export const Graph = ({ isWidget = false, openNodeModal }: GraphProps) => {
-  const isPremium = useUser(state => state.isPremium);
   const setLoading = useGraph(state => state.setLoading);
   const setZoomPanPinch = useGraph(state => state.setZoomPanPinch);
   const centerView = useGraph(state => state.centerView);
@@ -142,13 +138,6 @@ export const Graph = ({ isWidget = false, openNodeModal }: GraphProps) => {
     ),
     []
   );
-
-  if (nodes.length > 8_000) return <ErrorView />;
-
-  if (nodes.length > 1_000 && !isWidget) {
-    if (!isPremium()) return <PremiumView />;
-  }
-
   return (
     <>
       <Loading message="Painting graph..." loading={loading} />

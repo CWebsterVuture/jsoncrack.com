@@ -1,13 +1,18 @@
-import { defaultJson } from "./data";
+import { defaultJson, defaultYaml } from "./data";
 
 export const TABS = [
   {
     id: 0,
-    name: "Standard JSON",
+    name: "JSON",
     json: defaultJson,
   },
   {
     id: 1,
+    name: "YAML",
+    json: defaultYaml,
+  },
+  {
+    id: 2,
     name: "Gallery",
     json: JSON.stringify(
       {
@@ -22,7 +27,7 @@ export const TABS = [
     ),
   },
   {
-    id: 2,
+    id: 3,
     name: "Nested JSON",
     json: JSON.stringify(
       [

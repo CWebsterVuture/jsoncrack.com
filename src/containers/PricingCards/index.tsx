@@ -91,16 +91,16 @@ const StyledPricingSection = styled.section`
 export const PricingCards = () => {
   return (
     <StyledPricingSection>
-      <h1>Unlock Full Potential of JSON Crack</h1>
+      <h1>Unlock Full Potential of JSON/YAML Crack</h1>
       <StyledSectionBody>
         <StyledPricingCard>
           <StyledPricingCardTitle>Free</StyledPricingCardTitle>
           <StyledPricingCardDetails>
             <StyledPricingCardDetailsItem>Store up to 15 files</StyledPricingCardDetailsItem>
             <StyledPricingCardDetailsItem>
-              Create short-links for saved JSON files
+              Create short-links for saved JSON/YAML files
             </StyledPricingCardDetailsItem>
-            <StyledPricingCardDetailsItem>Embed saved JSON instantly</StyledPricingCardDetailsItem>
+            <StyledPricingCardDetailsItem>Embed saved JSON/YAML instantly</StyledPricingCardDetailsItem>
           </StyledPricingCardDetails>
         </StyledPricingCard>
         <StyledPricingCard premium>
@@ -111,7 +111,7 @@ export const PricingCards = () => {
               Create and share up to 200 files
             </StyledPricingCardDetailsItem>
             <StyledPricingCardDetailsItem>
-              Get access to JSON Crack API to generate JSON remotely
+              Get access to JSON/YAML Crack API to generate JSON/YAML remotely
             </StyledPricingCardDetailsItem>
             <StyledPricingCardDetailsItem>Everything in previous tier</StyledPricingCardDetailsItem>
           </StyledPricingCardDetails>

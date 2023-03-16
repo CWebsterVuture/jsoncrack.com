@@ -1,7 +1,7 @@
 {
-  "name": "JSON Crack",
-  "short_name": "JSON Crack",
-  "description": "Visualize your JSON data onto graphs seamlessly.",
+  "name": "JSON/YAML Crack",
+  "short_name": "JSON/YAML Crack",
+  "description": "Visualize your JSON or YAML data onto graphs seamlessly.",
   "theme_color": "#36393e",
   "background_color": "#36393e",
   "display": "standalone",

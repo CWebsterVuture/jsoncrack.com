@@ -32,7 +32,6 @@ function JsonCrack({ Component, pageProps }: AppProps) {
   const theme = useTheme();
   const [isReady, setReady] = React.useState(false);
   const lightmode = useStored(state => state.lightmode);
-
   React.useEffect(() => {
     setReady(true);
   }, []);

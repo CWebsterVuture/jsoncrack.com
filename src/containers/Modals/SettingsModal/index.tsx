@@ -1,12 +1,13 @@
 import React from "react";
-import { Modal, Group, Switch, Stack, ModalProps } from "@mantine/core";
+import { Modal, Group, Switch, Stack, ModalProps, Select } from "@mantine/core";
 import useStored from "src/store/useStored";
 import { shallow } from "zustand/shallow";
 
 export const SettingsModal: React.FC<ModalProps> = ({ opened, onClose }) => {
   const lightmode = useStored(state => state.lightmode);
   const setLightTheme = useStored(state => state.setLightTheme);
-
+  const setEditorLanguage = useStored(state => state.setEditorLanguage);
+  const editorLanguage = useStored.getState().editorLanguage;
   const [
     toggleHideCollapse,
     toggleChildrenCount,
@@ -57,6 +58,16 @@ export const SettingsModal: React.FC<ModalProps> = ({ opened, onClose }) => {
             color="teal"
             onChange={e => setLightTheme(e.currentTarget.checked)}
             checked={lightmode}
+          />
+          <Select
+            label="Select editor language"
+            placeholder="editor language"
+            defaultValue={editorLanguage}
+            data={[
+              {value: 'json', label: 'JSON' },
+              {value: 'yaml', label: 'YAML' },
+            ]}
+            onChange={value => setEditorLanguage(value || "json")}
           />
         </Stack>
       </Group>

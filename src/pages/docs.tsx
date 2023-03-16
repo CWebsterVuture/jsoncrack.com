@@ -59,8 +59,8 @@ const Docs = () => {
   return (
     <>
       <Head>
-        <title>Creating JSON Crack Embed | JSON Crack</title>
-        <meta name="description" content="Embedding JSON Crack tutorial into your websites." />
+        <title>Creating JSON/YAML Crack Embed | JSON/YAML Crack</title>
+        <meta name="description" content="Embedding JSON/YAML Crack tutorial into your websites." />
       </Head>
       <StyledPage>
         <Button component="a" href="/">
@@ -97,7 +97,7 @@ const Docs = () => {
           </StyledContentBody>
         </StyledContent>
         <StyledContent>
-          <h2># Embed Saved JSON</h2>
+          <h2># Embed Saved JSON/YAML</h2>
           <StyledContentBody>
             <StyledDescription>
               Just like fetching from URL above, you can embed saved public json by adding the json
@@ -158,7 +158,7 @@ const Docs = () => {
               <StyledHighlight as="div" alert>
                 ⚠️ <b>Note</b> - postMessage should be delayed using setTimeout
               </StyledHighlight>
-              To display JSON on load event, you should post json into iframe using it&apos;s onload
+              To display JSON/YAML on load event, you should post json into iframe using it&apos;s onload
               event like in the example. Make sure to use{" "}
               <StyledHighlight>setTimeout</StyledHighlight> when loading data and set a time around
               500ms otherwise it won&apos;t work.

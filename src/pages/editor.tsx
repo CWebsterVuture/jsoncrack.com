@@ -37,7 +37,7 @@ const EditorPage: React.FC = () => {
   const loading = useJson(state => state.loading);
 
   React.useEffect(() => {
-    // Fetch JSON by query
+    // Fetch JSON/YAML by query
     // Check Session User
     if (isReady) {
       checkSession();
@@ -45,13 +45,13 @@ const EditorPage: React.FC = () => {
     }
   }, [checkSession, fetchJson, isReady, query.json]);
 
-  if (loading) return <Loading message="Fetching JSON from cloud..." />;
+  if (loading) return <Loading message="Fetching JSON/YAML from cloud..." />;
 
   return (
     <StyledEditorWrapper>
       <Head>
-        <title>Editor | JSON Crack</title>
-        <meta name="description" content="View your JSON data in graphs instantly." />
+        <title>Editor | JSON/YAML Crack</title>
+        <meta name="description" content="View your JSON/YAML data in graphs instantly." />
       </Head>
       <StyledPageWrapper>
         <Sidebar />

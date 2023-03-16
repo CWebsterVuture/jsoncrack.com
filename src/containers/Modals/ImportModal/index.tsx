@@ -3,6 +3,7 @@ import { Modal, Group, Button, TextInput, Stack, Divider, ModalProps } from "@ma
 import toast from "react-hot-toast";
 import { AiOutlineUpload } from "react-icons/ai";
 import useJson from "src/store/useJson";
+import useStored from "src/store/useStored";
 import styled from "styled-components";
 
 const StyledUploadWrapper = styled.label`
@@ -34,29 +35,41 @@ const StyledUploadMessage = styled.h3`
 
 export const ImportModal: React.FC<ModalProps> = ({ opened, onClose }) => {
   const setJson = useJson(state => state.setJson);
+  const editorLanguage = useStored(state => (state.editorLanguage));
   const [url, setURL] = React.useState("");
-  const [jsonFile, setJsonFile] = React.useState<File | null>(null);
+  const [file, setFile] = React.useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) setJsonFile(e.target.files?.item(0));
+    if (e.target.files) setFile(e.target.files?.item(0));
   };
 
   const handleFileDrag = (e: React.DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
 
     if (e.type === "drop" && e.dataTransfer.files.length) {
-      if (e.dataTransfer.files[0].type === "application/json") {
-        setJsonFile(e.dataTransfer.files[0]);
+      let fileType;
+      switch(editorLanguage){
+        case "json":
+          fileType = "application/json";
+          break;
+        case "yaml":
+          fileType =  "text/yaml";
+          break;
+        default:
+          fileType = "application/json";
+          break;
+      }
+      if (e.dataTransfer.files[0].type === fileType) {
+        setFile(e.dataTransfer.files[0]);
       } else {
-        toast.error("Please upload JSON file!");
+        toast.error(`Please upload ${editorLanguage.toUpperCase()} file!`);
       }
     }
   };
 
   const handleImportFile = () => {
     if (url) {
-      setJsonFile(null);
-
+      setFile(null);
       toast.loading("Loading...", { id: "toastFetch" });
       return fetch(url)
         .then(res => res.json())
@@ -64,46 +77,56 @@ export const ImportModal: React.FC<ModalProps> = ({ opened, onClose }) => {
           setJson(JSON.stringify(json, null, 2));
           onClose();
         })
-        .catch(() => toast.error("Failed to fetch JSON!"))
+        .catch(() => toast.error("Failed to fetch JSON/YAML!"))
         .finally(() => toast.dismiss("toastFetch"));
     }
 
-    if (jsonFile) {
+    if (file) {
       const reader = new FileReader();
-
-      reader.readAsText(jsonFile, "UTF-8");
+      reader.readAsText(file, "UTF-8");
       reader.onload = function (data) {
         setJson(data.target?.result as string);
         onClose();
       };
     }
   };
-
+  let fileType;
+  switch(editorLanguage){
+    case "json":
+      fileType = "application/json";
+      break;
+    case "yaml":
+      fileType =  "*/yml,*/yaml, */x-yaml, */x-yml";
+      break;
+    default:
+      fileType = "application/json";
+      break;
+  }
   return (
-    <Modal title="Import JSON" opened={opened} onClose={onClose} centered>
+    <Modal title="Import File" opened={opened} onClose={onClose} centered>
       <Stack py="sm">
         <TextInput
           value={url}
           onChange={e => setURL(e.target.value)}
           type="url"
-          placeholder="URL of JSON to fetch"
+          placeholder="URL of File to fetch"
           data-autofocus
         />
         <StyledUploadWrapper onDrop={handleFileDrag} onDragOver={handleFileDrag}>
           <input
-            key={jsonFile?.name}
+            key={file?.name}
             onChange={handleFileChange}
             type="file"
-            accept="application/JSON"
+            accept={fileType}
           />
           <AiOutlineUpload size={48} />
-          <StyledUploadMessage>Click Here to Upload JSON</StyledUploadMessage>
-          <StyledFileName>{jsonFile?.name ?? "None"}</StyledFileName>
+          <StyledUploadMessage>Click Here to Upload File</StyledUploadMessage>
+          <StyledFileName>{file?.name ?? "None"}</StyledFileName>
         </StyledUploadWrapper>
       </Stack>
       <Divider py="xs" />
       <Group position="right">
-        <Button onClick={handleImportFile} disabled={!(jsonFile || url)}>
+        <Button onClick={handleImportFile} disabled={!(file || url)}>
           Import
         </Button>
       </Group>

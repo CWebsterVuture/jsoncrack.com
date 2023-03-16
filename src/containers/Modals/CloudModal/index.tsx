@@ -112,7 +112,7 @@ const GraphCard: React.FC<{ data: Json; refetch: () => void; active: boolean }> 
 
     toast
       .promise(deleteJson(data._id), {
-        loading: "Deleting JSON file...",
+        loading: "Deleting JSON/YAML file...",
         error: "An error occurred while deleting the file!",
         success: `Deleted ${name}!`,
       })
@@ -168,19 +168,19 @@ const CreateCard: React.FC<{ reachedLimit: boolean }> = ({ reachedLimit }) => {
 
   const onCreate = async () => {
     try {
-      toast.loading("Saving JSON...", { id: "jsonSave" });
+      toast.loading("Saving JSON/YAML...", { id: "jsonSave" });
       const res = await saveJson({ data: getJson() });
 
       if (res.errors && res.errors.items.length > 0) throw res.errors;
 
-      toast.success("JSON saved to cloud", { id: "jsonSave" });
+      toast.success("JSON/YAML saved to cloud", { id: "jsonSave" });
       setHasChanges(false);
       replace({ query: { json: res.data._id } });
     } catch (error: any) {
       if (error?.items?.length > 0) {
         return toast.error(error.items[0].message, { id: "jsonSave", duration: 7000 });
       }
-      toast.error("Failed to save JSON!", { id: "jsonSave" });
+      toast.error("Failed to save JSON/YAML!", { id: "jsonSave" });
     }
   };
 
@@ -198,7 +198,7 @@ const CreateCard: React.FC<{ reachedLimit: boolean }> = ({ reachedLimit }) => {
     <StyledJsonCard onClick={onCreate} create>
       <StyledCreateWrapper>
         <AiOutlinePlus size="24" />
-        Create New JSON
+        Create New JSON/YAML
       </StyledCreateWrapper>
     </StyledJsonCard>
   );

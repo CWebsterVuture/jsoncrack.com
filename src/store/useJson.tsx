@@ -1,12 +1,11 @@
 import { decompressFromBase64 } from "lz-string";
 import toast from "react-hot-toast";
 import { altogic } from "src/api/altogic";
-import { defaultJson } from "src/constants/data";
+import { getDefaultData } from "src/constants/data";
 import { saveJson as saveJsonDB } from "src/services/db/json";
 import useGraph from "src/store/useGraph";
 import { Json } from "src/typings/altogic";
 import { create } from "zustand";
-
 interface JsonActions {
   setJson: (json: string) => void;
   getJson: () => string;
@@ -53,9 +52,9 @@ const useJson = create<JsonStates & JsonActions>()((set, get) => ({
         useGraph.getState().setGraph(jsonStr);
         return set({ json: jsonStr, loading: false });
       } catch (error) {
-        useGraph.getState().setGraph(defaultJson);
-        set({ json: defaultJson, loading: false });
-        toast.error("Failed to fetch JSON from URL!");
+        useGraph.getState().setGraph(getDefaultData());
+        set({ json: getDefaultData(), loading: false });
+        toast.error("Failed to fetch JSON/YAML from URL!");
       }
     } else if (jsonId) {
       const { data, errors } = await altogic.endpoint.get(`json/${jsonId}`, undefined, {
@@ -79,8 +78,8 @@ const useJson = create<JsonStates & JsonActions>()((set, get) => ({
       useGraph.getState().setGraph("[]");
       return set({ json: "[]", loading: false });
     } else {
-      useGraph.getState().setGraph(defaultJson);
-      set({ json: defaultJson, loading: false });
+      useGraph.getState().setGraph(getDefaultData());
+      set({ json: getDefaultData(), loading: false });
     }
   },
   setJson: json => {
@@ -93,12 +92,12 @@ const useJson = create<JsonStates & JsonActions>()((set, get) => ({
       const params = new URLSearchParams(url.search);
       const jsonQuery = params.get("json");
 
-      toast.loading("Saving JSON...", { id: "jsonSave" });
+      toast.loading("Saving JSON/YAML...", { id: "jsonSave" });
       const res = await saveJsonDB({ id: isNew ? undefined : jsonQuery, data: get().json });
 
       if (res.errors && res.errors.items.length > 0) throw res.errors;
 
-      toast.success("JSON saved to cloud", { id: "jsonSave" });
+      toast.success("JSON/YAML saved to cloud", { id: "jsonSave" });
       set({ hasChanges: false });
       return res.data._id;
     } catch (error: any) {
@@ -107,7 +106,7 @@ const useJson = create<JsonStates & JsonActions>()((set, get) => ({
         return undefined;
       }
 
-      toast.error("Failed to save JSON!", { id: "jsonSave" });
+      toast.error("Failed to save JSON/YAML!", { id: "jsonSave" });
       return undefined;
     }
   },

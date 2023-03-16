@@ -2,7 +2,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
-import { JsonEditor } from "src/containers/Editor/JsonEditor";
+import { Editor } from "src/containers/Editor/JsonEditor";
 import useGraph from "src/store/useGraph";
 import styled from "styled-components";
 
@@ -33,7 +33,7 @@ const Panes: React.FC = () => {
         maxSize={isMobile ? Infinity : 800}
         visible={!fullscreen}
       >
-        <JsonEditor />
+        <Editor />
       </Allotment.Pane>
       <Allotment.Pane minSize={0} maxSize={isMobile && !fullscreen ? 0 : Infinity}>
         <LiveEditor />

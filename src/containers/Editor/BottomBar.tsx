@@ -96,20 +96,20 @@ export const BottomBar = () => {
     if (hasChanges) {
       try {
         setIsUpdating(true);
-        toast.loading("Saving JSON...", { id: "jsonSave" });
+        toast.loading("Saving JSON/YAML...", { id: "jsonSave" });
         const res = await saveJson({ id: query.json as string, data: getJson() });
 
         if (res.errors && res.errors.items.length > 0) throw res.errors;
         if (res.data._id) replace({ query: { json: res.data._id } });
 
-        toast.success("JSON saved to cloud", { id: "jsonSave" });
+        toast.success("JSON/YAML saved to cloud", { id: "jsonSave" });
         setHasChanges(false);
       } catch (error: any) {
         if (error?.items?.length > 0) {
           return toast.error(error.items[0].message, { id: "jsonSave", duration: 5000 });
         }
 
-        toast.error("Failed to save JSON!", { id: "jsonSave" });
+        toast.error("Failed to save JSON/YAML!", { id: "jsonSave" });
       } finally {
         setIsUpdating(false);
       }
@@ -143,7 +143,7 @@ export const BottomBar = () => {
     <StyledBottomBar>
       {data?.name && (
         <Head>
-          <title>{data.name} | JSON Crack</title>
+          <title>{data.name} | JSON/YAML Crack</title>
         </Head>
       )}
       <StyledLeft>

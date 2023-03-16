@@ -24,7 +24,7 @@ export const Producthunt = () => {
           width="300"
           height="64"
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=332281&theme=neutral"
-          alt="JSON Crack - Simple visualization tool for your JSON data. | Product Hunt"
+          alt="JSON/YAML Crack - Simple visualization tool for your JSON/YAML data. | Product Hunt"
           loading="lazy"
         />
       </a>

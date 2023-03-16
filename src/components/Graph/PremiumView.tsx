@@ -36,7 +36,7 @@ export const PremiumView = () => (
   <StyledPremiumView>
     <StyledTitle>PLAY BIG!</StyledTitle>
     <StyledInfo>
-      Upgrade JSON Crack to premium and explore & unlock full potantial of your data!
+      Upgrade JSON/YAML Crack to premium and explore & unlock full potantial of your data!
     </StyledInfo>
     <Button
       size="lg"

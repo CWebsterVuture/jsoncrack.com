@@ -1,3 +1,4 @@
+import useStored from "src/store/useStored";
 export const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Example taken from https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json
@@ -35,4 +36,38 @@ const sampleJson = Object.freeze({
   ],
 });
 
+const yaml = `
+---
+ doe: "a deer, a female deer"
+ ray: "a drop of golden sun"
+ pi: 3.14159
+ xmas: true
+ french-hens: 3
+ calling-birds:
+   - huey
+   - dewey
+   - louie
+   - fred
+ xmas-fifth-day:
+   calling-birds: four
+   french-hens: 3
+   golden-rings: 5
+   partridges:
+     count: 1
+     location: "a pear tree"
+   turtle-doves: two
+`;
+
 export const defaultJson = JSON.stringify(sampleJson, null, 2);
+export const defaultYaml = yaml;
+
+export const getDefaultData = () => {
+  let editorLanguage = useStored.getState().editorLanguage;
+  switch(editorLanguage){
+    case "yaml":
+      return defaultYaml;
+    case "json":
+    default:
+      return defaultJson;
+  }
+}

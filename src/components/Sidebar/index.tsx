@@ -192,7 +192,7 @@ export const Sidebar: React.FC = () => {
         </StyledElement>
 
         <SidebarButton
-          title="Edit JSON"
+          title="Edit JSON/YAML"
           deviceDisplay="mobile"
           onClick={() => toggleFullscreen(!fullscreen)}
           component={<AiOutlineEdit />}
@@ -224,14 +224,14 @@ export const Sidebar: React.FC = () => {
         />
 
         <SidebarButton
-          title="Download JSON"
+          title="Download JSON/YAML"
           deviceDisplay="desktop"
           onClick={handleSave}
           component={<AiOutlineSave />}
         />
 
         <SidebarButton
-          title="Delete JSON"
+          title="Delete JSON/YAML"
           onClick={() => setVisible("clear")(true)}
           component={<AiOutlineDelete />}
         />

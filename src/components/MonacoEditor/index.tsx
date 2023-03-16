@@ -36,7 +36,7 @@ export const MonacoEditor = () => {
   const hasError = useJson(state => state.hasError);
   const getHasChanges = useJson(state => state.getHasChanges);
   const lightmode = useStored(state => (state.lightmode ? "light" : "vs-dark"));
-
+  const editorLanguage = useStored(state => (state.editorLanguage));
   const handleEditorWillMount = React.useCallback(
     (monaco: Monaco) => {
       monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
@@ -69,14 +69,21 @@ export const MonacoEditor = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSetJson, hasError, value]);
 
-  const handleChange = React.useCallback((value?: string) => {
-    try {
-      const parsedJson = JSON.stringify(JSON.parse(value!), null, 2);
-      setValue(parsedJson);
-    } catch (error) {
+  const handleChange = React.useCallback((value: string) => {
+    try{
+      switch(editorLanguage){
+        case "json": {
+          const parsedJson = JSON.stringify(JSON.parse(value!), null, 2);
+          setValue(parsedJson);
+          break;
+        }
+        default:
+          setValue(value);
+      }
+    } catch(error) {
       setValue(value);
     }
-  }, []);
+  }, [editorLanguage]);
 
   React.useEffect(() => {
     const beforeunload = (e: BeforeUnloadEvent) => {
@@ -105,7 +112,7 @@ export const MonacoEditor = () => {
         onChange={handleChange}
         loading={<Loading message="Loading Editor..." />}
         beforeMount={handleEditorWillMount}
-        defaultLanguage="json"
+        language={editorLanguage}
         height="100%"
       />
     </StyledWrapper>

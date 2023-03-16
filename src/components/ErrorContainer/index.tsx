@@ -1,6 +1,7 @@
 import React from "react";
 import { MdReportGmailerrorred, MdOutlineCheckCircleOutline } from "react-icons/md";
 import useJson from "src/store/useJson";
+import useStored from "src/store/useStored";
 import styled from "styled-components";
 
 const StyledErrorWrapper = styled.div`
@@ -43,7 +44,7 @@ const StyledError = styled.pre`
 
 export const ErrorContainer = () => {
   const hasError = useJson(state => state.hasError);
-
+  const editorLanguage = useStored(state => (state.editorLanguage));
   return (
     <StyledErrorWrapper>
       <StyledErrorExpand error={hasError}>
@@ -53,7 +54,7 @@ export const ErrorContainer = () => {
           ) : (
             <MdOutlineCheckCircleOutline size={20} />
           )}
-          {hasError ? "Invalid JSON" : "JSON Valid"}
+          {hasError ? `Invalid ${editorLanguage.toUpperCase()}` : `${editorLanguage.toUpperCase()} Valid`}
         </StyledTitle>
       </StyledErrorExpand>
     </StyledErrorWrapper>

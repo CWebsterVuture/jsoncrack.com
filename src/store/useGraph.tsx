@@ -5,7 +5,7 @@ import { getChildrenEdges } from "src/utils/getChildrenEdges";
 import { getOutgoers } from "src/utils/getOutgoers";
 import { create } from "zustand";
 import useJson from "./useJson";
-
+import useStored from "./useStored";
 const initialStates = {
   zoomPanPinch: undefined as ReactZoomPanPinchRef | undefined,
   direction: "RIGHT" as CanvasDirection,
@@ -45,7 +45,8 @@ const useGraph = create<Graph & GraphActions>((set, get) => ({
   ...initialStates,
   setSelectedNode: ({ nodeData, path }) => set({ selectedNode: nodeData, path }),
   setGraph: (data, options) => {
-    const { nodes, edges } = parser(data ?? useJson.getState().json);
+    const editorLanguage = useStored.getState().editorLanguage;
+    const { nodes, edges } = parser(data ?? useJson.getState().json, editorLanguage);
 
     set({
       nodes,

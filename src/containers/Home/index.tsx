@@ -32,10 +32,10 @@ const SyntaxHighlighter = dynamic(() => import("react-syntax-highlighter/dist/cj
 const HeroSection = () => (
   <Styles.StyledHeroSection id="main">
     <Styles.StyledTitle>
-      <Styles.StyledGradientText>JSON</Styles.StyledGradientText> CRACK
+      <Styles.StyledGradientText>JSON/YAML</Styles.StyledGradientText> CRACK
     </Styles.StyledTitle>
     <Styles.StyledSubTitle>
-      Seamlessly visualize your JSON data{" "}
+      Seamlessly visualize your JSON/YAML data{" "}
       <Styles.StyledHighlightedText>instantly</Styles.StyledHighlightedText> into graphs.
     </Styles.StyledSubTitle>
     <Link href="/editor">
@@ -120,7 +120,7 @@ const FeaturesSection = () => (
       <Styles.StyledCardDescription>
         We believe that powerful software doesn&apos;t have to be difficult to use. That&apos;s why
         we&apos;ve designed our app to be as intuitive and easy-to-use as possible. You can quickly
-        and easily load your JSON data and start exploring and analyzing it right away!
+        and easily load your JSON/YAML data and start exploring and analyzing it right away!
       </Styles.StyledCardDescription>
     </Styles.StyledSectionCard>
 
@@ -143,7 +143,7 @@ const FeaturesSection = () => (
       <Styles.StyledCardTitle>DOWNLOAD</Styles.StyledCardTitle>
       <Styles.StyledCardDescription>
         Download the graph to your local machine and use it wherever you want, to your blogs,
-        website or make it a poster and paste to the wall. Who wouldn&apos;t want to see a JSON
+        website or make it a poster and paste to the wall. Who wouldn&apos;t want to see a JSON/YAML
         Crack graph onto their wall, eh?
       </Styles.StyledCardDescription>
     </Styles.StyledSectionCard>
@@ -154,8 +154,8 @@ const FeaturesSection = () => (
       </Styles.StyledCardIcon>
       <Styles.StyledCardTitle>LIVE</Styles.StyledCardTitle>
       <Styles.StyledCardDescription>
-        With Microsoft&apos;s Monaco Editor which is also used by VS Code, easily edit your JSON and
-        directly view through the graphs. Also there&apos;s a JSON validator above of it to make
+        With Microsoft&apos;s Monaco Editor which is also used by VS Code, easily edit your JSON/YAML and
+        directly view through the graphs. Also there&apos;s a JSON/YAML validator above of it to make
         sure there is no type error.
       </Styles.StyledCardDescription>
     </Styles.StyledSectionCard>
@@ -167,7 +167,7 @@ const GitHubSection = () => (
     <Styles.StyledTwitterQuote>
       <blockquote className="twitter-tweet" data-lang="en" data-dnt="true" data-theme="light">
         <p lang="en" dir="ltr">
-          Looking to understand or explore some JSON? Just paste or upload to visualize it as a
+          Looking to understand or explore some JSON/YAML? Just paste or upload to visualize it as a
           graph with <a href="https://t.co/HlKSrhKryJ">https://t.co/HlKSrhKryJ</a> 😍 <br />
           <br />
           Thanks to <a href="https://twitter.com/aykutsarach?ref_src=twsrc%5Etfw">
@@ -184,7 +184,7 @@ const GitHubSection = () => (
     <Styles.StyledSectionArea>
       <Styles.StyledSubTitle>Open Source Community</Styles.StyledSubTitle>
       <Styles.StyledMinorTitle>
-        At JSON Crack, we believe in the power of open source software and the communities that
+        At JSON/YAML Crack, we believe in the power of open source software and the communities that
         support it. That&apos;s why we&apos;re proud to be part of the open source community and to
         contribute to the development and growth of open source tools and technologies.
         <br />
@@ -192,9 +192,9 @@ const GitHubSection = () => (
         freely available to anyone who wants to use it, and we welcome contributions from anyone
         who&apos;s interested in helping to improve it. Whether you&apos;re a developer, a data
         scientist, or just someone who&apos;s passionate about open source, we&apos;d love to have
-        you join our community and help us make JSON Crack the best it can be.
+        you join our community and help us make JSON/YAML Crack the best it can be.
         <br />
-        <br /> So why not join us and become part of the JSON Crack open source community today? We
+        <br /> So why not join us and become part of the JSON/YAML Crack open source community today? We
         can&apos;t wait to see what we can accomplish together!
       </Styles.StyledMinorTitle>
       <Button
@@ -216,15 +216,15 @@ const EmbedSection = () => (
     <Styles.StyledSectionArea>
       <Styles.StyledSubTitle>Embed Into Your Website</Styles.StyledSubTitle>
       <Styles.StyledMinorTitle>
-        JSON Crack provides users with the necessary code to embed the app into a website easily
+        JSON/YAML Crack provides users with the necessary code to embed the app into a website easily
         using an iframe. This code can be easily copied and pasted into the desired location on the
-        website, allowing users to quickly and easily integrate JSON Crack into existing workflows.
+        website, allowing users to quickly and easily integrate JSON/YAML Crack into existing workflows.
         <br />
-        <br /> Once the app is embedded, users can use it to view and analyze JSON data directly on
+        <br /> Once the app is embedded, users can use it to view and analyze JSON/YAML data directly on
         the website. This can be useful for a variety of purposes, such as quickly checking the
-        structure of a JSON file or verifying the data contained within it. JSON Crack&apos;s
-        intuitive interface makes it easy to navigate and understand even complex JSON data, making
-        it a valuable tool for anyone working with JSON.
+        structure of a JSON/YAML file or verifying the data contained within it. JSON/YAML Crack&apos;s
+        intuitive interface makes it easy to navigate and understand even complex JSON/YAML data, making
+        it a valuable tool for anyone working with JSON/YAML.
       </Styles.StyledMinorTitle>
       <Button w={200} size="md" component="a" href="/docs">
         LEARN TO EMBED
@@ -244,7 +244,7 @@ const SupportSection = () => (
   <Styles.StyledPaidSection>
     <Styles.StyledProducthunt>
       <Styles.StyledSubTitle>
-        Support JSON Crack at
+        Support JSON/YAML Crack at
         <br />
         <Styles.StyledHighlightedText>Product Hunt</Styles.StyledHighlightedText>
       </Styles.StyledSubTitle>
@@ -261,7 +261,7 @@ const SponsorSection = () => (
   <Styles.StyledSponsorSection id="sponsor">
     <Styles.StyledSubTitle>Sponsors</Styles.StyledSubTitle>
     <Styles.StyledMinorTitle>
-      Your supports make JSON Crack possible to continue and accessible for everyone!
+      Your supports make JSON/YAML Crack possible to continue and accessible for everyone!
     </Styles.StyledMinorTitle>
     <Button
       size="md"
@@ -280,7 +280,7 @@ const Home: React.FC = () => {
   return (
     <Styles.StyledHome>
       <Head>
-        <title>JSON Crack - Crack your data into pieces</title>
+        <title>JSON/YAML Crack - Crack your data into pieces</title>
       </Head>
       <Navbar />
       <HeroSection />

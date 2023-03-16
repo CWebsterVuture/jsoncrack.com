@@ -46,7 +46,7 @@ const StyledSupportButton = styled.a`
 export const SupportButton = () => {
   return (
     <StyledSupportButton href="https://github.com/sponsors/AykutSarac" target="_blank" rel="me">
-      <StyledText>Support JSON Crack</StyledText>
+      <StyledText>Support JSON/YAML Crack</StyledText>
       <HiHeart size={25} />
     </StyledSupportButton>
   );
