@@ -33,7 +33,6 @@ export type States = {
 export const parser = (str: string, editorLanguage: string = "json") => {
 
   try {
-    console.log({str, editorLanguage });
     let jsonStr = str;
     switch(editorLanguage) {
       case "json":
@@ -41,7 +40,6 @@ export const parser = (str: string, editorLanguage: string = "json") => {
         break;
       case "yaml":
         const parsedYaml = yaml.load(str);
-        console.log(parsedYaml);
         jsonStr = JSON.stringify(parsedYaml);
         break;
     }
